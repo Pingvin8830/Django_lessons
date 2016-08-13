@@ -5,7 +5,7 @@ from .models          import Question
 
 # Create your views here.
 
-def index (request):
+def index_old (request):
 	latest_question_list =  Question.objects.order_by ('-pub_date') [:5]
 	template             =  loader.get_template ('polls/index.html')
 	context              =  RequestContext (
@@ -14,6 +14,13 @@ def index (request):
 														}
 													)
 	return HttpResponse (template.render (context))
+
+def index (request):
+	latest_question_list = Question.objects.order_by ('-pub_date') [:5]
+	context              = {
+		'latest_question_list': latest_auestion_list,
+	}
+	return render (request, 'polls/index.html', context)
 
 def detail (request, question_id):
 	return HttpResponse ('You`re looking at question %s.' % question_id)
