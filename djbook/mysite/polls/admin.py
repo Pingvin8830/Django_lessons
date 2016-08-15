@@ -21,6 +21,7 @@ class QuestionAdmin (admin.ModelAdmin):
 		'pub_date',
 		'was_published_recently',
 	)
+	list_filter = ['pub_date']
 
 class QuestionAdmin_old (admin.ModelAdmin):
 	fields = [
